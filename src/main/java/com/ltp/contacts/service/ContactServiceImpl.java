@@ -28,6 +28,11 @@ public class ContactServiceImpl implements ContactService {
     public void updateContact(String id, Contact conatct) {
         contactRepository.updateContact(findIndexById(id),conatct);
     }
+
+    @Override
+    public void deleteContact(String id) {
+        contactRepository.deleteContact(findIndexById(id));
+    }
     private int findIndexById(String id) {
         return IntStream.range(0, contactRepository.getContacts().size())
             .filter(index -> contactRepository.getContacts().get(index).getId().equals(id))
