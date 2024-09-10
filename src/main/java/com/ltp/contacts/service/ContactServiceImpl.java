@@ -23,6 +23,11 @@ public class ContactServiceImpl implements ContactService {
     public void saveContact(Contact conatct) {
         contactRepository.saveContact(conatct);
     }
+
+    @Override
+    public void updateContact(String id, Contact conatct) {
+        contactRepository.updateContact(findIndexById(id),conatct);
+    }
     private int findIndexById(String id) {
         return IntStream.range(0, contactRepository.getContacts().size())
             .filter(index -> contactRepository.getContacts().get(index).getId().equals(id))
